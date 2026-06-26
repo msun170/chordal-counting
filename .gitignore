@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+b048192_new.txt
+b048193_new.txt
+paper/*.aux
+paper/*.log
+paper/*.out
