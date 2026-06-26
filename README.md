@@ -6,8 +6,8 @@ were stuck at n=15 since 2021:
 - **A048193**: all chordal graphs on n nodes
 - **A048192**: connected chordal graphs on n nodes
 
-The new values for n=16, 17, 18 are in `b048193.txt` and `b048192.txt`. They are not in OEIS yet
-(to be submitted).
+The new values for n=16, 17, 18 are in `b048193.txt` and `b048192.txt`. They are being submitted to
+the OEIS: A048193 is in review, and A048192 follows once a draft slot opens up.
 
 ## the idea
 
@@ -100,3 +100,7 @@ everything is validated four independent ways:
 b048192.txt  e91c9a6d936007b4814503593fa5522d265eb254414ae484815a5b6e33a625e6
 b048193.txt  13f8305370f6dafdef2756c86ff3847a4ffc0d4f9138217ca3db8b087c111298
 ```
+
+## license
+
+MIT, see `LICENSE`. if you use this, a citation is in `CITATION.cff`.

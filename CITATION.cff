@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or the computed values, please cite it as below."
+title: "Counting Unlabeled Chordal Graphs by Equivariant Evaporation"
+authors:
+  - family-names: "Sun"
+    given-names: "Matthew"
+date-released: "2026-06-26"
+version: "1.0.0"
+url: "https://github.com/msun170/chordal-counting"
+repository-code: "https://github.com/msun170/chordal-counting"
+license: MIT
+keywords:
+  - "chordal graphs"
+  - "graph enumeration"
+  - "OEIS"
+  - "Burnside"
+  - "A048192"
+  - "A048193"
+abstract: >-
+  Code and proofs for counting unlabeled chordal graphs by a symmetry-equivariant
+  evaporation dynamic program summed over cycle types (Burnside), extending OEIS
+  A048192 (connected) and A048193 (all) to n=18.
