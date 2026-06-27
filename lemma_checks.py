@@ -62,7 +62,7 @@ def report(name,ok):
     print(f"  [{'PASS' if ok else 'FAIL'}] {name}",flush=True)
     if not ok: fails+=1
 
-# ---------- L3: pure group theory ----------
+#  L3: pure group theory
 ok=True
 for s in range(1,13):
     for d in range(1,13):
@@ -78,7 +78,7 @@ for s in range(1,13):
         if sizes and (sizes!={s//gcd(d,s)}): ok=False
 report("L3 block decomposition: #orbits=gcd(d,s), size=s/gcd(d,s)  (all 1<=d,s<=12)",ok)
 
-# ---------- L1 & L2: over enumerated invariant chordal graphs ----------
+# L1 & L2: over enumerated invariant chordal graphs
 types=[[2,1],[2,2],[3,1],[4,1],[3,2],[2,2,1],[4,2],[6],[2,1,1],[3,3],[4,1,1]]
 L1ok=True;L2ok=True;count=0
 for ct in types:
@@ -106,7 +106,7 @@ for ct in types:
 report(f"L1 orbit-evaporation: pi-orbit-mates share one evap time  ({count} graphs)",L1ok)
 report("L2 component bundle: orbit size d | N, component is <pi^d>-invariant",L2ok)
 
-# ---------- L5: bundle factor d^(k-1) (labeled case d=c) ----------
+# L5: bundle factor d^(k-1) (labeled case d=c)
 A007134=[0,1,1,4,35]  # index = #vertices; connected labeled chordal
 def count_single_period_c_bundles(c,k):
     # cycle type c^k (k c-cycles), n=c*k; count pi-invariant chordal graphs whose components
