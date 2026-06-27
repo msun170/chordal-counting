@@ -22,7 +22,7 @@ class EquivDP:
         self.S=S; self.n=len(S)
         self.idx={s:i for i,s in enumerate(S)}
         self._g1={};self._f={};self._g={};self._gT={};self._gH={};self._g2={};self._fT={};self._fH={}
-    # ---- tuple helpers ----
+    # tuple helpers
     def zero(self): return (0,)*self.n
     def add(self,a,b): return tuple(a[i]+b[i] for i in range(self.n))
     def sub(self,a,b): return tuple(a[i]-b[i] for i in range(self.n))
@@ -42,7 +42,7 @@ class EquivDP:
         for i in range(self.n):
             cc*= comb(k[i]-1,kp[i]-1) if i==mp else comb(k[i],kp[i])
         return cc
-    # ---- bundle GF machinery (multivariate over sub-types) ----
+    # bundle GF machinery (multivariate over sub-types)
     def _subinfo(self,d):
         # returns (subS tuple, tau_of_size dict s->sub_type, g_of_size dict s->gcd(d,s))
         tau={s:s//gcd(d,s) for s in self.S}
@@ -107,7 +107,7 @@ class EquivDP:
             if all(v==0 for v in sel) and kind!='cover': continue
             s+=co*sub.g1(t-tshift,sel,kp_sub)
         return (d**(Kp-1))*s
-    # ---- core recurrences (mirror validated orbit_dp/block124, multi-divisor bundles) ----
+    # core recurrences (mirror validated orbit_dp/block124, multi-divisor bundles)
     def g1(self,t,x,k):
         if t==0 or self.isz(k): return 0
         key=(t,x,k)
@@ -280,7 +280,7 @@ class EquivDP:
         k=tuple(counts.get(s,0) for s in self.S)
         n=sum(s*counts.get(s,0) for s in self.S)
         return sum(self.g1(t,self.zero(),k) for t in range(1,n+2))
-    # ---- ALL invariant chordal (fix) via component-bundle decomposition ----
+    # ALL invariant chordal (fix) via component-bundle decomposition
     def nvert(self,k): return sum(self.S[i]*k[i] for i in range(self.n))
     def cfix_tuple(self,k):
         if self.isz(k): return 1
