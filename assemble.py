@@ -8,7 +8,7 @@ from functools import lru_cache
 
 W = 0  # clique bound (pairs for tau / vertices for labeled), set per target
 
-# ===================== LABELED HLV DP (exact port of chordal_gmp.cpp) =====================
+# labeled HLV DP
 import functools
 def memo(f):
     c={}
@@ -89,7 +89,7 @@ def fH_l(t,x,z,l,k):
 def chordal_conn_l(k):
     return sum(g1_l(t,0,k) for t in range(1,k+1))
 
-# ===================== TAU-EQUIVARIANT DP (all 8 validated recurrences) =====================
+# tau equivariant DP, all 8 validated recurrences
 # coefficients
 @memo
 def Mc(x,xv):  # #xv-subsets of 2x verts covering all x pairs
