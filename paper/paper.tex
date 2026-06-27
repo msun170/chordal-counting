@@ -453,7 +453,7 @@ $P(\lambda)=\prod_{i=1}^r(m_i+1)$.
 Let $r=r(\lambda)$ be the number of distinct part sizes of $\lambda$. The dynamic program for
 $\lambda$, including its divisor-bundle sub-instances, runs in time
 \[
-T(\lambda)\ \le\ n^{O(1)}\,P(\lambda)^{O(1)}\,(n+1)^{\,r}.
+T(\lambda)\ \le\ n^{O(1)}\,P(\lambda)^{O(1)}\,(n+1)^{\,O(r)}.
 \]
 \end{lemma}
 
@@ -478,8 +478,10 @@ $\mathrm{poly}(n)$. Work per state is therefore $n^{O(1)}\,P(\lambda)^{2}\,(n+1)
 \emph{Sub-instances.} A bundle term calls a sub-instance whose multiplicity vector has
 $P(\lambda')\le P(\lambda)$ (the map $s\mapsto s/\gcd(d,s)$ only merges parts, and
 $(a{+}1)(b{+}1)\ge a{+}b{+}1$) and at most $r$ distinct sizes; the recursion depth is $\le\log_2 n$
-(each step at least halves the largest size). Charging each sub-instance by the same bound multiplies
-the total by a factor $n^{O(1)}$, leaving the stated form.
+(each step at least halves the largest size). The number of distinct reachable sub-instances is at
+most $\prod_i d(s_i)\le 2^{O(r)}$; charging each by the same bound multiplies the total by $2^{O(r)}$,
+which is absorbed into the $(n+1)^{O(r)}$ factor (as $(n+1)^{O(r)}\ge 2^{O(r)}$), leaving the stated
+form.
 \end{proof}
 
 \begin{lemma}\label{lem:maxprod}
@@ -504,9 +506,9 @@ time $n^{O(\sqrt n)}=e^{O(\sqrt n\log n)}$.
 
 \begin{proof}
 The total time is $\sum_{\lambda\vdash n}T(\lambda)$ plus polynomial Burnside bookkeeping. By
-Lemma~\ref{lem:percost}, $T(\lambda)\le n^{O(1)}P(\lambda)^{O(1)}(n+1)^{r}$. By
+Lemma~\ref{lem:percost}, $T(\lambda)\le n^{O(1)}P(\lambda)^{O(1)}(n+1)^{O(r)}$. By
 Lemma~\ref{lem:maxprod}, $P(\lambda)^{O(1)}\le e^{O(\sqrt n)}$ and $r\le\sqrt{2n}$, so
-$(n+1)^{r}\le(n+1)^{\sqrt{2n}}=e^{O(\sqrt n\log n)}$; hence $T(\lambda)\le e^{O(\sqrt n\log n)}=
+$(n+1)^{O(r)}\le(n+1)^{O(\sqrt{2n})}=e^{O(\sqrt n\log n)}$; hence $T(\lambda)\le e^{O(\sqrt n\log n)}=
 n^{O(\sqrt n)}$. The number of partitions is $p(n)=e^{\Theta(\sqrt n)}$ (Hardy--Ramanujan), so
 $\sum_{\lambda\vdash n}T(\lambda)\le p(n)\cdot\max_\lambda T(\lambda)\le n^{O(\sqrt n)}$.
 \end{proof}
