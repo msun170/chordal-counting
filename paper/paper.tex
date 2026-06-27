@@ -318,7 +318,14 @@ and the associated boundary generating function in formal variables $\{v_\tau\}$
 \end{equation}
 The coefficient of $\prod_\tau v_\tau^{\,a_\tau}$ in $\Gamma_d(x)$ is the number of ways a bundle's
 sub-component can see exactly $a_\tau$ blocks of each sub-type; $\Gamma_d^{\mathrm{cov}}$ is the same
-restricted to seeing at least one block of every boundary orbit (``covers all of $X$''). These are
+restricted to seeing at least one block of every boundary orbit (``covers all of $X$''). The
+parenthetical is exact, not merely suggestive: by Lemma~\ref{lem:block} the quotient
+$\langle\pi\rangle/\langle\pi^{d}\rangle\cong\Z/\gcd(d,s_i)\Z$ permutes the $\gcd(d,s_i)$ blocks of
+each boundary orbit $O_i$ transitively, so the full period-$d$ bundle
+$K\cup\pi K\cup\dots\cup\pi^{d-1}K$ is adjacent to all of $O_i$ exactly when its representative $K$
+meets at least one block of $O_i$ (the $d$ translates sweep that block across the whole orbit).
+Thus $\Gamma_d^{\mathrm{cov}}$ counts component-orbits that, taken as a whole, see all of $X$, even
+when no single constituent component does. These are
 the equivariant analogues of the labeled coefficients $\binom{x}{x'}$ and $\binom{x}{x}$, and the
 sub-type vector $x'=(a_\tau)_\tau$ is the boundary argument of the sub-world function in
 Theorem~\ref{thm:cod}. With $d=1$ every block is a whole orbit ($\tau_i=s_i$, $\gcd=1$) and
@@ -463,7 +470,7 @@ $n^{O(1)}$ estimate: the monomial count is exponential in the number of distinct
 
 \emph{Work per state.} Besides the generating function, a recurrence sums over a sub-multiset of $k$
 ($\le P(\lambda)$ terms; $\le P(\lambda)^2$ for the absorption recurrence) and over divisors
-($\le\log n$), and evaluates the sub-world $g_1$ at each generating-function monomial (a memo
+(at most $d(c)=n^{o(1)}\le n$), and evaluates the sub-world $g_1$ at each generating-function monomial (a memo
 lookup). All counts are non-negative integers bounded by the number of labeled chordal graphs on $n$
 vertices, $\le 2^{\binom n2}$, hence of $O(n^2)$ bits, so each arithmetic operation costs
 $\mathrm{poly}(n)$. Work per state is therefore $n^{O(1)}\,P(\lambda)^{2}\,(n+1)^{r}$.
