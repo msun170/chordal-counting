@@ -6,8 +6,9 @@ were stuck at n=15 since 2021:
 - **A048193**: all chordal graphs on n nodes
 - **A048192**: connected chordal graphs on n nodes
 
-The new values for n=16, 17, 18 are in `b048193.txt` and `b048192.txt`. They are being submitted to
-the OEIS: A048193 is in review, and A048192 follows once a draft slot opens up.
+The new values for n=16 through 20 are in `b048193.txt` and `b048192.txt`. n=16-18 have been
+submitted to the OEIS (A048193 is in review, A048192 follows once a draft slot opens up), and
+n=19 and 20 were computed afterward.
 
 ## the idea
 
@@ -42,10 +43,10 @@ last line is:
 ALL LEMMA CHECKS PASS
 ```
 
-**`python3 euler_check.py`** (fast) checks A048193 = euler transform of A048192 through n=18. passed
+**`python3 euler_check.py`** (fast) checks A048193 = euler transform of A048192 through n=20. passed
 if the last line is:
 ```
-EULER TRANSFORM CONFIRMS ALL TERMS incl a(18)!!
+EULER TRANSFORM CONFIRMS ALL TERMS incl a(20)!!
 ```
 
 **`python3 valtable.py`** (fast) compares fix and cfix to brute force for 23 cycle types. passed if
@@ -66,13 +67,15 @@ RESULT: ALL LAYERS PASS
 ```
 RESULT: all known terms (n<=15) reproduced
 ```
-use `gen_bfile.py 15` for a quick full check of the known terms (a few minutes), or `gen_bfile.py 18`
-to regenerate the new terms (slow, about 1 to 2 hours, n=18 alone is ~40 min). the three new rows
-should read exactly:
+use `gen_bfile.py 15` for a quick full check of the known terms (a few minutes), or `gen_bfile.py 20`
+to regenerate the new terms (slow, several hours; n=19 and n=20 are a few hours each on one core).
+the five new rows should read exactly:
 ```
 n=16  A048193(all)=5985406996403  A048192(conn)=5796153514484  NEW  [...]
 n=17  A048193(all)=247178491630853  A048192(conn)=241003010628949  NEW  [...]
 n=18  A048193(all)=12895963060540295  A048192(conn)=12642592677074970  NEW  [...]
+n=19  A048193(all)=855912598965399807  A048192(conn)=842762851699294393  NEW  [...]
+n=20  A048193(all)=72786012927793961715  A048192(conn)=71916937400532750123  NEW  [...]
 ```
 
 ## the numbers
@@ -82,6 +85,8 @@ n=18  A048193(all)=12895963060540295  A048192(conn)=12642592677074970  NEW  [...
 | 16 | 5985406996403 | 5796153514484 |
 | 17 | 247178491630853 | 241003010628949 |
 | 18 | 12895963060540295 | 12642592677074970 |
+| 19 | 855912598965399807 | 842762851699294393 |
+| 20 | 72786012927793961715 | 71916937400532750123 |
 
 n=1 through 15 match the known OEIS values exactly.
 
@@ -97,8 +102,8 @@ everything is validated four independent ways:
 ## sha256 of the b-files
 
 ```
-b048192.txt  e91c9a6d936007b4814503593fa5522d265eb254414ae484815a5b6e33a625e6
-b048193.txt  13f8305370f6dafdef2756c86ff3847a4ffc0d4f9138217ca3db8b087c111298
+b048192.txt  2933d6dd7c2fb4133032158c4a5230514762f762975734e9df598f106ef0ac94
+b048193.txt  95eda5ffd21902003b79624f16dd8fae021e4a00dfd3f78e7611e95824f95abb
 ```
 
 ## license

@@ -29,7 +29,7 @@
 \newcommand{\fhat}{\hat f}
 
 \title{\bf Counting Unlabeled Chordal Graphs by Equivariant Evaporation}
-\author{Matthew Sun}
+\author{Matthew Sun\\[2pt]\normalsize Independent researcher, USA\\\normalsize\texttt{matthewsun42@gmail.com}}
 \date{June 2026}
 
 \begin{document}
@@ -49,7 +49,7 @@ when a connected piece spans a cyclic orbit of size $c$, it forms, for each divi
 $d$-fold bundle whose constituent is an object of the same kind in the cyclic world of order $c/d$,
 computed by the same program recursively. We prove the decomposition and the correctness of the
 resulting recurrences, and we prove that the full Burnside computation runs in sub-exponential time
-$n^{O(\sqrt n)}$. We report the new terms through $n=18$ and describe four independent validations,
+$n^{O(\sqrt n)}$. We report the new terms through $n=20$ and describe four independent validations,
 including exact agreement with all previously known values of both sequences and an Euler-transform
 consistency check.
 \end{abstract}
@@ -90,7 +90,7 @@ on the labeled recurrences of~\cite{HLV2023}.
 \item A running-time theorem (Theorem~\ref{thm:time}): the entire computation of A048192$(n)$ and
 A048193$(n)$ runs in sub-exponential time $n^{O(\sqrt n)}=e^{O(\sqrt n\log n)}$, in contrast to the
 single-exponential worst case of the general parameterized bound.
-\item The new values through $n=18$ (Section~\ref{sec:results}), with four independent validations.
+\item The new values through $n=20$ (Section~\ref{sec:results}), with four independent validations.
 \end{enumerate}
 
 \section{Preliminaries}
@@ -526,13 +526,13 @@ sense in which the present method is feasible across the full partition set.
 
 The recurrences of Section~\ref{sec:dp} and the Burnside sum~\eqref{eq:burnside} were implemented and
 evaluated exactly in rational arithmetic. Table~\ref{tab:vals} lists both sequences; the entries for
-$n\le15$ reproduce the previously published values, and $n=16,17,18$ are new (submitted to the OEIS,
-pending review).
+$n\le15$ reproduce the previously published values, and $n=16$ through $20$ are new ($n=16$--$18$ have
+been submitted to the OEIS; $n=19,20$ are reported here for the first time).
 
 We stress that extending these sequences is not a matter of generating one more graph. The Burnside
 sum~\eqref{eq:burnside} requires the exact value of $\fix(\lambda)$ for \emph{every} cycle type
 $\lambda\vdash n$, and the number of cycle types is the partition number $p(n)$, which grows
-sub-exponentially ($p(15)=176$, $p(18)=385$). The difficulty is concentrated in the cycle types with
+sub-exponentially ($p(15)=176$, $p(20)=627$). The difficulty is concentrated in the cycle types with
 many small orbits, where direct enumeration is hopeless and the equivariant recurrences of
 Section~\ref{sec:dp} are essential; it is computing all of these $\fix(\lambda)$, not enumerating
 graphs, that had kept the sequences at $n=15$.
@@ -555,6 +555,8 @@ $n$ & A048193$(n)$ (all) & A048192$(n)$ (connected)\\
 16 & $\mathbf{5985406996403}$ & $\mathbf{5796153514484}$\\
 17 & $\mathbf{247178491630853}$ & $\mathbf{241003010628949}$\\
 18 & $\mathbf{12895963060540295}$ & $\mathbf{12642592677074970}$\\
+19 & $\mathbf{855912598965399807}$ & $\mathbf{842762851699294393}$\\
+20 & $\mathbf{72786012927793961715}$ & $\mathbf{71916937400532750123}$\\
 \bottomrule
 \end{tabular}
 \caption{Unlabeled chordal graph counts. Bold entries ($n\ge16$) are new.}
@@ -574,8 +576,12 @@ composite types; a representative sample appears in Table~\ref{tab:valid}.
 \href{https://oeis.org/A058862}{A058862}$(n)$ for $1\le n\le 10$.
 \item \emph{Euler transform.} Chordal graphs are closed under disjoint union, so the total count is
 the Euler transform of the connected count; this identity holds for the computed values through
-$n=18$, so the two independently assembled sequences are mutually consistent at the new terms.
+$n=20$, so the two independently assembled sequences are mutually consistent at every new term.
 \end{enumerate}
+For the two largest terms $n=19,20$, which lie beyond the reach of the backtracking oracle of~(2), the
+validation rests on the method's exact reproduction of all known data~(1) and the labeled limit~(3),
+together with the Euler cross-check~(4), under which the all-count and connected-count sequences
+certify each other.
 
 \begin{table}[h]
 \centering\small
@@ -608,11 +614,11 @@ backtracking enumeration. The composite sizes $4,6,8,9,10$ and the cross-divisor
 By Theorem~\ref{thm:time} the method extends to larger $n$ in sub-exponential time; the values above
 were obtained on a single processor.
 
-\paragraph{Data availability.} The two computed tables ($n=1,\dots,18$) have SHA-256 digests
+\paragraph{Data availability.} The two computed tables ($n=1,\dots,20$) have SHA-256 digests
 \begin{center}\footnotesize\ttfamily
 \begin{tabular}{ll}
-A048192 (connected) & e91c9a6d936007b4814503593fa5522d265eb254414ae484815a5b6e33a625e6\\
-A048193 (all) & 13f8305370f6dafdef2756c86ff3847a4ffc0d4f9138217ca3db8b087c111298\\
+A048192 (connected) & 2933d6dd7c2fb4133032158c4a5230514762f762975734e9df598f106ef0ac94\\
+A048193 (all) & 95eda5ffd21902003b79624f16dd8fae021e4a00dfd3f78e7611e95824f95abb\\
 \end{tabular}
 \end{center}
 The implementation (the recurrences of Appendix~\ref{app:rec}, the brute-force oracle, the
